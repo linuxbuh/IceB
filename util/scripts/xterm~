@@ -1,0 +1,2 @@
+#xterm -bg black -fg white -fa mono -fs 15
+gnome-terminal -bg black -fg white -fa mono -fs 15
