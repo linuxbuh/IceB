@@ -12,7 +12,7 @@ message ("Начали построение")
 #Используйте пакет pkg-config для обнаружения GTK + заголовки / файлы
 #библиотеки
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GLIB2 REQUIRED glib-2.0)
+pkg_check_modules(GLIB2 REQUIRED glib-2.0 ncursesw)
 
 #Установка CMake использовать glib-2.0, указать компилятору, где искать
 #заголовки и компоновщику где искать библиотеки
@@ -25,7 +25,7 @@ add_definitions(${GLIB2_CFLAGS_OTHER})
 
 #set(MYSQLCLIENT_LIB mysqlclient) #расположение библиотеки mysqlclient
 set(MYSQLCLIENT_LIB mariadbclient) #расположение библиотеки mariadb
-#set(MYSQLCLIENT_LIB mariadb) #расположение библиотеки mariadb
+set(MYSQLCLIENT_LIB mariadb) #расположение библиотеки mariadb
 set(NCURSESW_LIB ncursesw)        #расположение библиотеки ncursesw
 
 
@@ -45,9 +45,9 @@ add_subdirectory (./additionally/without-curses)
 add_subdirectory (./additionally/other)
 
 #записываем программы в каталог откуда они будут запускаться
-#install(TARGETS i_admint startxbu xbu xdk xkas xmu xrnn xud xukr xuos xupl xusl xzp DESTINATION /usr/local/bin)
+install(TARGETS i_admint startxbu xbu xdk xkas xmu xrnn xud xukr xuos xupl xusl xzp DESTINATION /usr/local/bin)
 
-#install(TARGETS iceb_ps DESTINATION /usr/lib/cups/filter)
+install(TARGETS iceb_ps DESTINATION /usr/lib/cups/filter)
 
 #переписываем настроечные файлы 
 install(DIRECTORY ./buhg/alx ./buhg/doc DESTINATION /usr/share/iceB)
@@ -55,4 +55,4 @@ install(DIRECTORY ./buhg/alx ./buhg/doc DESTINATION /usr/share/iceB)
 install(FILES ./util/cups/iceb.convs ./util/cups/iceb.types DESTINATION /etc/cups)
 
 
-install(FILES ./util/terminfo/xterm-putty_12 DESTINATION /lib/terminfo/x)
+install(FILES ./util/terminfo/xterm DESTINATION /lib/terminfo/x)
